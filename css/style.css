@@ -821,3 +821,145 @@ nav ul li.items.selected a {
 
 @media (max-width: 768px) {
 }
+
+/* ---------------------------------------------------
+    REGISTRATION 
+----------------------------------------------------- */
+.register {
+  margin: 50px 150px;
+  padding: 40px 60px;
+  background: white;
+  border-top: 6px solid black;
+  width: 700px;
+  border-radius: 5px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.register-title {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.register-subtitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 12px;
+  margin: 32px 0 24px 0;
+  padding-bottom: 8px;
+  font-size: 18px;
+  border-bottom: 0.5px solid rgb(212, 212, 212);
+}
+
+.register form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.register form label {
+  margin-bottom: 4px;
+}
+
+.register form input:not(.user-interest) {
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.register-btn {
+  background: #ffbe0c;
+  color: black;
+  font-weight: bold;
+}
+
+.register-btn:hover {
+  cursor: pointer;
+  filter: brightness(105%);
+}
+
+.register select {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 10px;
+  width: 100%;
+}
+
+/* ---------------------------------------------------
+    LOGIN
+----------------------------------------------------- */
+.login-body{
+  font-family: "Poppins", sans-serif;
+  background: #fafafa;
+}
+
+.login {
+  margin: 50px 150px;
+  padding: 40px 60px;
+  background: black;
+  border-top: 6px solid white;
+  width: 700px;
+  border-radius: 5px;
+  box-shadow: 0 3px 10px rgb(255 255 255 / 0.2);
+}
+
+.login-title {
+  font-size: 22px;
+  font-weight: bold;
+  color:#999;
+}
+
+.login-subtitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 12px;
+  margin: 32px 0 24px 0;
+  padding-bottom: 8px;
+  font-size: 18px;
+  border-bottom: 0.5px solid rgb(43, 43, 43);
+  color:#999;
+}
+
+.login-subtitle i{
+  color:#999;
+}
+
+.login form i{
+  color:#999;
+}
+
+.login form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.login form label {
+  margin-bottom: 4px;
+  color:#999;
+}
+
+.login form input {
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.login-btn {
+  background: black;
+  color: #ffbe0c;
+  font-weight: bold;
+}
+
+.login-btn:hover {
+  cursor: pointer;
+  filter: brightness(105%);
+}
+
+.login select {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 10px;
+  width: 100%;
+}
