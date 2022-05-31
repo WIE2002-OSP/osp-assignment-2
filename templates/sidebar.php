@@ -15,8 +15,8 @@
     <ul class="list-unstyled components">
         <li class="sidebar-item">
             <a href="home.php">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                Explore
+                <i class="fa-solid fa-home"></i>
+                Home
             </a>
         </li>
         <li class="sidebar-item">
