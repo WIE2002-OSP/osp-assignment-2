@@ -210,6 +210,11 @@ ul.CTAs a {
   width: 200px;
   height: 45px;
   cursor: pointer;
+  transition: all 0.3s;
+}
+
+.logout-btn:hover {
+  background: rgb(53, 53, 53);
 }
 
 a.article,
@@ -499,6 +504,191 @@ nav ul li.items.selected a {
 }
 
 /* ---------------------------------------------------
+    HOMEPAGE
+----------------------------------------------------- */
+.home {
+  padding: 100px 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.quotes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 55px;
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+
+.quotes div {
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}
+
+.quotes div.load {
+  opacity: 1;
+}
+
+.section-1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  column-gap: 50px;
+  row-gap: 30px;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+  width: 100%;
+}
+
+.white-div {
+  width: 500px;
+  background: white;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
+  border-radius: 10px;
+  height: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.join-btn-input-wrapper {
+  background: #f4f4f5;
+  border-radius: 10px;
+  padding: 10px;
+  width: 80%;
+}
+.white-div:nth-child(1) {
+  width: 50%;
+  min-width: 400px;
+}
+
+.white-div:nth-child(2) {
+  width: 30%;
+  min-width: 400px;
+}
+
+.home-btn {
+  width: 200px;
+  height: 50px;
+  background: #ffbe0c;
+  border-radius: 10px;
+  border: 5px solid #ffbe0c;
+  transition: background 0.2s, border-radius 0.3s;
+}
+
+#join-input {
+  width: 70%;
+  margin-right: 10px;
+}
+#join-btn {
+  width: 25%;
+  height: 40px;
+}
+
+#create-btn {
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.home-btn:hover {
+  background: #ffd45c;
+  border: 5px solid #ffd45c;
+}
+
+.home-btn:active {
+  background: rgb(238, 179, 16);
+  border: 5px solid rgb(238, 179, 16);
+  border-radius: 20px;
+}
+
+.section-title {
+  font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 10px;
+  margin-bottom: 30px;
+}
+
+.section-2 {
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.card {
+  min-width: 250px;
+}
+.card-list {
+  display: flex;
+  flex-direction: row;
+  column-gap: 15px;
+  width: 100%;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding-bottom: 10px;
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  height: 12px;
+  width: 12px;
+}
+
+::-webkit-scrollbar {
+  background: #fcf5dc;
+  margin-top: 5px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-track-piece {
+  height: 5px !important;
+  width: 5px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  height: 10px;
+  border-radius: 20px;
+  background: #ffbe0c;
+}
+
+::-webkit-scrollbar {
+  display: block;
+  width: 5px;
+}
+
+.card:hover {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
+}
+
+/* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
 
@@ -613,4 +803,21 @@ nav ul li.items.selected a {
   .setting {
     margin-top: 100px;
   }
+
+  /* ---------------------------------------------------
+    HOMEPAGE
+----------------------------------------------------- */
+
+  .white-div:nth-child(1) {
+    width: 80%;
+    min-width: 400px;
+  }
+
+  .white-div:nth-child(2) {
+    width: 80%;
+    min-width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
 }

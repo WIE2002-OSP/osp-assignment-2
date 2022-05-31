@@ -14,11 +14,24 @@
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
     </script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
+    </script>
 
     <script type="text/javascript">
-$(document).ready(function() {
-    var current = location.pathname;
+var element = document.getElementsByClassName("card-list");
+console.log(element)
+element[0].addEventListener("wheel", (event) => {
+    event.preventDefault();
+    element[0].scrollBy({
+        left: event.deltaY < 0 ? -200 : 200,
+    });
+});
 
+$(document).ready(function() {
+    $(".quotes div").addClass("load");
+    var current = location.pathname;
+    $('nav')
     $('nav ul li.burger').click(() => {
         $('nav ul li').toggleClass("hide");
         $('nav ul li.items').toggleClass("show");
@@ -49,6 +62,7 @@ $(document).ready(function() {
         $(".setting-language-btn").html(`<img src="${$img}" alt="">
         <div>${$text}</div>`)
     });
+
 
 });
     </script>
