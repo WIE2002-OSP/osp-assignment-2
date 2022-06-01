@@ -1,11 +1,13 @@
 <?php include('templates/header.php'); ?>
+
 <head>
     <meta charset="UTF-8">
 </head>
+
 <body>
     <!-- Sidebar  -->
     <div class="wrapper">
-
+        <?php include('templates/sidebar.php'); ?>
         <!-- Page Content  -->
         <div id="content">
             <!-- Navbar  -->
@@ -105,4 +107,5 @@
             </div>
         </div>
     </div>
-    <?php include('templates/footer.php'); ?>
+</body>
+<?php include('templates/footer.php'); ?>
