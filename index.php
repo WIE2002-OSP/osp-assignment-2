@@ -7,11 +7,8 @@
 <body>
     <!-- Sidebar  -->
     <div class="wrapper">
-        <?php include('templates/sidebar.php'); ?>
         <!-- Page Content  -->
-        <div id="content">
-            <!-- Navbar  -->
-            <?php include('templates/navbar.php'); ?>
+        <div id="register-login-content">
             <!-- Check for the user credential and allow to move into home page-->
             <?php
                 // Initialize the session
@@ -77,11 +74,11 @@
                     mysqli_close($link);    // Close connection
                 }
             ?>
-            <div class="login">
-                <div class="login-title">
+            <div class="register">
+                <div class="register-title">
                     Login
                 </div>
-                <div class="login-subtitle">
+                <div class="register-subtitle">
                     <i class="fa fa-sign-in"></i>
                     <div>Login with registered email and password</div>
                 </div>
@@ -99,7 +96,7 @@
                         <span class="invalid-feedback"><?php echo $pass_error; ?></span>
                     </div>
                     <div class="form-group">
-                        <input type="submit" class="login-btn" value="Login">
+                        <input type="submit" class="register-btn" value="Login">
                     </div>
                     <!-- lead to register if no account exist-->
                     <p>Don't have an account? <a href="register.php">Sign up now</a></p>

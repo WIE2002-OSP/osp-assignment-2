@@ -9,11 +9,8 @@
 <body>
     <!-- Sidebar  -->
     <div class="wrapper">
-        <?php include('templates/sidebar.php'); ?>
         <!-- Page Content  -->
-        <div id="content">
-            <!-- Navbar  -->
-            <?php include('templates/navbar.php'); ?>
+        <div id="register-login-content">
             <!-- Storing data to MySQL -->
             <?php
                 // Include config file
@@ -26,6 +23,7 @@
                 $user_birthday = "";
                 $user_interest = "";
                 $error = "";
+                $confirm_password_err = "";
                 // Processing form data when form is submitted
                 if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])){
                     // Capture errors related to user email
@@ -44,7 +42,12 @@
                         }
                         mysqli_stmt_close($stmt); // Close statement
                     }
-                    if (empty($error)){
+                    // Capture error related to confirming password
+                    if($_POST['user_password'] != $_POST['confirm_password']){
+                        $confirm_password_err = "Password did not match.";
+                    }
+
+                    if (empty($error) && empty($confirm_password_err)){
                         // Details to be stored
                         $user_name = $_POST['user_name'];   
                         $user_email = $_POST['user_email'];
@@ -54,7 +57,7 @@
                         // For user interest
                         $checkbox_interest = $_POST['user_interest'];  
                         $user_interest = "";  
-                        foreach($checkbox_interest  as $interest)  
+                        foreach($checkbox_interest as $interest)  
                         {  
                             $user_interest .= $interest.", ";  
                         }  
@@ -112,7 +115,13 @@
                         <label>Password (minimum 8 characters): </label> 
                         <input type="password" name="user_password" class="form-control" minlength="8" required>
                     </div>
-                    
+                    <div class="form-group">
+                        <i class="fas fa-unlock"></i>
+                        <label>Confirm Password (check with password above): </label>
+                        <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>" min-length="8" required>
+                        <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
+                    </div>
+
                     <div class="register-subtitle">
                         <i class="fa fa-thumbs-up"></i>
                         <div>Recommendation</div>
@@ -156,7 +165,6 @@
                                 </script>';
                         ?>
                     
-
                     <div class="form-group">
                         <input class="register-btn" type="submit" name="submit" id='submit' value="Submit">
                     </div>
