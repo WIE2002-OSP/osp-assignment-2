@@ -963,3 +963,62 @@ nav ul li.items.selected a {
   padding: 5px 10px;
   width: 100%;
 }
+
+/* ---------------------------------------------------
+    Profile
+----------------------------------------------------- */
+.profile {
+  margin: 50px 50px;
+  padding: 20px 50px;
+  background: white;
+  border-top: 6px solid black;
+  width: 700px;
+  border-radius: 5px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.profile-title {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.profile-subtitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 10px;
+  margin: 32px 0 24px 0;
+  padding-bottom: 8px;
+  font-size: 20px;
+  border-bottom: 0.5px solid rgb(212, 212, 212);
+}
+
+.profile-details {
+  font-size: 15px;
+}
+
+.quiz {
+  min-width: 100px;
+}
+
+.profile-quiz {
+  display: flex;
+  flex-direction: row;
+  column-gap: 15px;
+  width: 100%;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding-bottom: 10px;
+  scrollbar-width: thin;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 20%;
+  padding: 20px;
+}
