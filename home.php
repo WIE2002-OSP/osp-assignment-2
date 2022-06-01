@@ -1,5 +1,6 @@
 <?php
-
+// Initialize the session
+session_start();
 $category = ["Mathematics", "Science", "Geography", "English", "Malay", "Physics", "Physics", "Physics"]; ?>
 
 <?php include('templates/header.php'); ?>
@@ -8,12 +9,18 @@ $category = ["Mathematics", "Science", "Geography", "English", "Malay", "Physics
     <!-- Sidebar  -->
     <div class="wrapper">
         <?php include('templates/sidebar.php'); ?>
-
-
         <!-- Page Content  -->
         <div id="content">
             <!-- Navbar  -->
             <?php include('templates/navbar.php'); ?>
+            <?php
+            
+            // Check if the user is logged in, if not then redirect him to login page
+            if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+                header("location: index.php");
+                exit;
+            }
+            ?>
             <div class="home">
                 <div class="quotes">
                     <div>

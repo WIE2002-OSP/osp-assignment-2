@@ -17,17 +17,17 @@
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
     </script>
-
     <script type="text/javascript">
-var element = document.getElementsByClassName("card-list");
-console.log(element)
-element[0].addEventListener("wheel", (event) => {
-    event.preventDefault();
-    element[0].scrollBy({
-        left: event.deltaY < 0 ? -200 : 200,
+var cardList = document.querySelector(".card-list");
+console.log(cardList)
+if (cardList) {
+    cardList.addEventListener("wheel", (event) => {
+        event.preventDefault();
+        cardList.scrollBy({
+            left: event.deltaY < 0 ? -200 : 200,
+        });
     });
-});
-
+}
 $(document).ready(function() {
     $(".quotes div").addClass("load");
     var current = location.pathname;
@@ -39,7 +39,6 @@ $(document).ready(function() {
     // $("#sidebar").mCustomScrollbar({
     //     theme: "minimal"
     // });
-
     $("nav ul li.items").each(function() {
         var $this = $(this);
         var $currentPath = $this.children().attr('href')
@@ -47,7 +46,6 @@ $(document).ready(function() {
             $this.addClass('selected');
         }
     });
-
     $("#sidebar ul li.sidebar-item").each(function() {
         var $this = $(this);
         var $currentPath = $this.children().attr('href')
@@ -55,15 +53,12 @@ $(document).ready(function() {
             $this.addClass('active');
         }
     });
-
     $(".setting .dropdown-menu .dropdown-item ").click(function() {
         var $text = $(this).text()
         var $img = $(this).children('img').attr('src')
         $(".setting-language-btn").html(`<img src="${$img}" alt="">
         <div>${$text}</div>`)
     });
-
-
 });
     </script>
     </body>

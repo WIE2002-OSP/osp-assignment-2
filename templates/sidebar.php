@@ -35,12 +35,20 @@
             <a href="setting.php"><i class="fa-solid fa-gear"></i>
                 Settings
             </a>
-        </li>
+        </li> 
     </ul>
-    <button class="logout-btn">
+    <?php if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) : ?>
+    <button class="login-btn-sidebar" value=login onclick="window.location='index.php';">
+        <i class="fa-solid fa-sign-in"></i>
+        Login
+    </button>
+    
+    <?php elseif($_SESSION["loggedin"] === true) : ?>
+    <button class="logout-btn" value=logout onclick="window.location='logout.php';">
         <i class="fa-solid fa-arrow-right-from-bracket"></i>
         Logout
     </button>
+    <?php endif; ?>
 
 
 </sidebar>
