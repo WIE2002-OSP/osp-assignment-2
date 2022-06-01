@@ -19,14 +19,17 @@
     </script>
 
     <script type="text/javascript">
-var element = document.getElementsByClassName("card-list");
-console.log(element)
-element[0].addEventListener("wheel", (event) => {
-    event.preventDefault();
-    element[0].scrollBy({
-        left: event.deltaY < 0 ? -200 : 200,
+var cardList = document.querySelector(".card-list");
+console.log(cardList)
+if (cardList) {
+    cardList.addEventListener("wheel", (event) => {
+        event.preventDefault();
+        cardList.scrollBy({
+            left: event.deltaY < 0 ? -200 : 200,
+        });
     });
-});
+}
+
 
 $(document).ready(function() {
     $(".quotes div").addClass("load");
