@@ -118,7 +118,7 @@
                     <div class="form-group">
                         <i class="fas fa-unlock"></i>
                         <label>Confirm Password (check with password above): </label>
-                        <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>" min-length="8" required>
+                        <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" min-length="8" required>
                         <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
                     </div>
 
