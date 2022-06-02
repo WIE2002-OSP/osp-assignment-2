@@ -104,7 +104,7 @@ nav li:hover {
   left: 0;
   height: 100vh;
   z-index: 999;
-  background: #ffbe0c;
+  background: #92B4EC;
   color: black;
   transition: all 0.3s;
   box-shadow: 1px 0px 0px rgb(9 9 9 / 10%);
@@ -140,7 +140,7 @@ nav li:hover {
 
 #sidebar .sidebar-header {
   padding: 10px 20px;
-  background: #ffbe0c;
+  background: #92B4EC;
 }
 
 #sidebar ul.components {
@@ -376,7 +376,7 @@ nav ul li.items.selected a {
   position: absolute;
   top: 0;
   right: 0;
-  background: #fffdf0;
+  background: #FFFFFF;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -431,7 +431,7 @@ nav ul li.items.selected a {
 }
 
 .setting-btn {
-  background: #ffbe0c;
+  background: #FFD24C;
   color: black;
   font-weight: bold;
 }
