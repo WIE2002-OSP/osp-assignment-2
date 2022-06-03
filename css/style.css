@@ -46,7 +46,7 @@ input {
 
 input:focus {
   outline: none;
-  border: 3px solid #ffbe0c;
+  border: 3px solid #77a6f7;
 }
 
 select {
@@ -58,7 +58,7 @@ select {
 
 select:focus {
   outline: none;
-  border: 3px solid #ffbe0c;
+  border: 3px solid #77a6f7;
 }
 nav li:hover {
   color: inherit;
@@ -104,7 +104,7 @@ nav li:hover {
   left: 0;
   height: 100vh;
   z-index: 999;
-  background: #92B4EC;
+  background: white;
   color: black;
   transition: all 0.3s;
   box-shadow: 1px 0px 0px rgb(9 9 9 / 10%);
@@ -114,12 +114,16 @@ nav li:hover {
   font-weight: bold;
   font-size: 30px;
   font-family: "Righteous", cursive;
+  padding: 10px 20px;
+  background: white;
+  color: #77a6f7;
 }
 
 .sidebar-user {
   display: flex;
   flex-direction: row;
   padding: 0px 20px;
+  color: #353535;
 }
 
 .sidebar-user div {
@@ -138,11 +142,6 @@ nav li:hover {
   margin-left: -250px;
 }
 
-#sidebar .sidebar-header {
-  padding: 10px 20px;
-  background: #92B4EC;
-}
-
 #sidebar ul.components {
   padding: 5px 0;
 }
@@ -153,6 +152,7 @@ nav li:hover {
 }
 
 #sidebar ul li a {
+  color: #929292;
   padding: 10px 20px;
   font-size: 1.1em;
   font-weight: 600;
@@ -160,14 +160,14 @@ nav li:hover {
 }
 
 #sidebar ul li a:hover {
-  color: black;
-  background: #ffeebe;
+  /* color: black; */
+  background: #f2f2f2;
 }
 
 #sidebar ul li.active > a,
 a[aria-expanded="true"] {
-  color: white;
-  background: black;
+  color: #77a6f7;
+  background: #f2f2f2;
 }
 
 a[data-toggle="collapse"] {
@@ -201,7 +201,8 @@ ul.CTAs a {
 }
 
 .logout-btn {
-  background: black;
+  background: #77a6f7;
+  border: #77a6f7;
   color: white;
   margin: 10px 20px;
   border-radius: 5px;
@@ -214,12 +215,13 @@ ul.CTAs a {
 }
 
 .logout-btn:hover {
-  background: rgb(53, 53, 53);
+  background: #92b4ec;
 }
 
 .login-btn-sidebar {
-  background: white;
-  color: black;
+  background: #77a6f7;
+  border: #77a6f7;
+  color: white;
   margin: 10px 20px;
   border-radius: 5px;
   font-size: 1.1em;
@@ -231,7 +233,7 @@ ul.CTAs a {
 }
 
 .login-btn-sidebar:hover {
-  background: rgb(202, 202, 202);
+  background: #92b4ec;
 }
 
 a.article,
@@ -376,7 +378,7 @@ nav ul li.items.selected a {
   position: absolute;
   top: 0;
   right: 0;
-  background: #FFFFFF;
+  background: #f2f2f2;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -431,8 +433,16 @@ nav ul li.items.selected a {
 }
 
 .setting-btn {
-  background: #FFD24C;
-  color: black;
+  background: #77a6f7;
+  border: #77a6f7;
+  color: white;
+  font-weight: bold;
+}
+
+.setting-btn:focus {
+  background: #77a6f7;
+  border: #77a6f7;
+  color: white;
   font-weight: bold;
 }
 
@@ -483,7 +493,7 @@ nav ul li.items.selected a {
 }
 
 .setting-language-btn:focus {
-  border: 3px solid #ffbe0c !important;
+  border: 3px solid #77a6f7 !important;
   background: white !important;
   color: black !important;
   width: 100% !important;
@@ -504,11 +514,11 @@ nav ul li.items.selected a {
 }
 
 .setting .dropdown-menu .dropdown-item:hover {
-  background: #ffeebe;
+  background: #d3e3fc;
 }
 
 .setting .dropdown-menu .dropdown-item:focus {
-  background: #ffeebe;
+  background: #d3e3fc;
   color: black;
 }
 
@@ -603,9 +613,10 @@ nav ul li.items.selected a {
 .home-btn {
   width: 200px;
   height: 50px;
-  background: #ffbe0c;
+  color: white;
+  background: #77a6f7;
   border-radius: 10px;
-  border: 5px solid #ffbe0c;
+  border: 5px solid #77a6f7;
   transition: background 0.2s, border-radius 0.3s;
 }
 
@@ -628,13 +639,13 @@ nav ul li.items.selected a {
 }
 
 .home-btn:hover {
-  background: #ffd45c;
-  border: 5px solid #ffd45c;
+  background: #92b4ec;
+  border: 5px solid #92b4ec;
 }
 
 .home-btn:active {
-  background: rgb(238, 179, 16);
-  border: 5px solid rgb(238, 179, 16);
+  background: rgb(16, 131, 238);
+  border: 5px solid rgb(16, 131, 238);
   border-radius: 20px;
 }
 
@@ -676,7 +687,7 @@ nav ul li.items.selected a {
 }
 
 ::-webkit-scrollbar {
-  background: #fcf5dc;
+  background: #d3e3fc;
   margin-top: 5px;
 }
 
@@ -693,7 +704,7 @@ nav ul li.items.selected a {
 ::-webkit-scrollbar-thumb {
   height: 10px;
   border-radius: 20px;
-  background: #ffbe0c;
+  background: #77a6f7;
 }
 
 ::-webkit-scrollbar {
@@ -849,7 +860,7 @@ nav ul li.items.selected a {
   position: absolute;
   top: 0;
   right: 0;
-  background: #fffdf0;
+  background: #f2f2f2;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -898,8 +909,8 @@ nav ul li.items.selected a {
 }
 
 .register-btn {
-  background: #ffbe0c;
-  color: black;
+  background: #77a6f7;
+  color: white;
   font-weight: bold;
 }
 
@@ -913,6 +924,16 @@ nav ul li.items.selected a {
   flex-direction: column;
   padding: 5px 10px;
   width: 100%;
+}
+
+.sign-up-prompt {
+  color: #77a6f7;
+  font-weight: bold;
+}
+
+.sign-up-prompt:hover {
+  color: #6d7fcc;
+  font-weight: bold;
 }
 
 /* ---------------------------------------------------
