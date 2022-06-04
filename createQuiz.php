@@ -95,7 +95,7 @@ if (isset($_POST['create-quiz'])) {
                         </a>
                     </div>
                 </div>
-                <input class="create-quiz-btn" name="create-quiz" type="submit" value="Save changes">
+                <input class="create-quiz-btn" name="create-quiz" type="submit" value="Create Quiz">
                 </input>
             </form>
         </div>
