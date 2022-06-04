@@ -9,7 +9,8 @@
     <div>
         <a href="profile.php" class="sidebar-user">
             <img src="img/gaychin.jpg" alt="Avatar">
-            <div> Username</div>
+            <div><?php echo $_SESSION["user_name"]; ?>
+            </div>
         </a>
     </div>
     <ul class="list-unstyled components">
@@ -20,9 +21,9 @@
             </a>
         </li>
         <li class="sidebar-item">
-            <a href="report.php">
+            <a href="quiz.php">
                 <i class="fa-solid fa-chart-line"></i>
-                Reports
+                Quiz List
             </a>
         </li>
         <li class="sidebar-item">
@@ -35,15 +36,15 @@
             <a href="setting.php"><i class="fa-solid fa-gear"></i>
                 Settings
             </a>
-        </li> 
+        </li>
     </ul>
-    <?php if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) : ?>
+    <?php if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) : ?>
     <button class="login-btn-sidebar" value=login onclick="window.location='index.php';">
         <i class="fa-solid fa-sign-in"></i>
         Login
     </button>
-    
-    <?php elseif($_SESSION["loggedin"] === true) : ?>
+
+    <?php elseif ($_SESSION["loggedin"] === true) : ?>
     <button class="logout-btn" value=logout onclick="window.location='logout.php';">
         <i class="fa-solid fa-arrow-right-from-bracket"></i>
         Logout

@@ -19,6 +19,7 @@
             // Define variables and initialize with empty values
             $user_email = "";
             $user_password = "";
+            $user_name = "";
             // catch error of the crendential
             $pass_error = "";
             $email_error = "";
@@ -31,7 +32,7 @@
                     $user_email  = $_POST["user_email"];
                     $user_password = $_POST["user_password"];
 
-                    $sql = "SELECT user_id, user_email, user_password FROM user WHERE user_email = ?";  // Prepare a select statement
+                    $sql = "SELECT user_id, user_name, user_email, user_password FROM user WHERE user_email = ?";  // Prepare a select statement
 
                     if ($stmt = mysqli_prepare($link, $sql)) {
                         $param_useremail = $user_email;   // Set parameters
@@ -42,7 +43,7 @@
                             // Check if useremail exists, if yes then verify password
                             if (mysqli_stmt_num_rows($stmt) == 1) {
                                 // Bind result variables
-                                mysqli_stmt_bind_result($stmt, $user_id, $user_email, $user_password_db);
+                                mysqli_stmt_bind_result($stmt, $user_id, $user_name, $user_email, $user_password_db);
                                 if (mysqli_stmt_fetch($stmt)) {
                                     if ($user_password_db == $user_password) {
                                         // Password is correct, so start a new session
@@ -51,6 +52,7 @@
                                         $_SESSION["loggedin"] = true;
                                         $_SESSION["user_id"] = $user_id;
                                         $_SESSION["user_email"] = $user_email;
+                                        $_SESSION["user_name"] = $user_name;
                                         // Redirect user to home page
                                         header("location: home.php");
                                     } else {

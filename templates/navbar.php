@@ -9,7 +9,7 @@
             &nbsp;
         </li>
         <li class="items" id="explore"><a href="home.php">Explore</a></li>
-        <li class="items" id="report"><a href="report.php">Reports</a></li>
+        <li class="items" id="quiz"><a href="quiz.php">Quiz List</a></li>
         <li class="items" id="profile"><a href="profile.php">Profile</a></li>
         <li class="items" id="setting"> <a href="setting.php">Settings</a></li>
     </ul>

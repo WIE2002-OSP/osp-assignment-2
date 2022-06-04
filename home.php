@@ -1,7 +1,7 @@
 <?php
 // Initialize the session
 session_start();
-$category = ["Mathematics", "Science", "Geography", "English", "Malay", "Physics", "Physics", "Physics"]; ?>
+$category = ["Mathematics", "Science", "Geography", "English", "Malay", "Physics", "Biology", "Japanese"]; ?>
 
 <?php include('templates/header.php'); ?>
 
@@ -52,22 +52,26 @@ $category = ["Mathematics", "Science", "Geography", "English", "Malay", "Physics
                     </div>
                     <div class="card-list">
                         <?php foreach ($category as $key => $value) : ?>
-                        <div class="card" style="width: 18rem;">
-                            <img class="card-img-top"
-                                src="https://online.stat.psu.edu/statprogram/sites/statprogram/files/2018-08/algebra-review.jpg"
-                                alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title"><?php echo $value; ?>
-                                </h5>
-                            </div>
-                        </div>
-                        <?php endforeach; ?>
+                        <a href="singleCategory.php?category=<?php echo $value ?> " class="brand-text">
+                            <div class="card" style="width: 18rem;">
+                                <img class="card-img-top"
+                                    src="https://online.stat.psu.edu/statprogram/sites/statprogram/files/2018-08/algebra-review.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo $value; ?>
+                                    </h5>
+                                </div>
+                        </a>
+
 
                     </div>
+                    <?php endforeach; ?>
 
                 </div>
-            </div>
 
+            </div>
         </div>
+
+    </div>
     </div>
     <?php include('templates/footer.php'); ?>
