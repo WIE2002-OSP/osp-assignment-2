@@ -101,4 +101,6 @@ if (isset($_POST['create-quiz'])) {
         </div>
     </div>
 </div>
+
+
 <?php include('templates/footer.php'); ?>

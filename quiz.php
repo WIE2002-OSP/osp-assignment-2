@@ -46,4 +46,36 @@
 
         </div>
     </div>
+    <!-- The Modal -->
+    <div id="deleteModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Delete Confirmation</h3>
+                <h3 class="x-btn">
+                    <div>
+                        &times;
+                    </div>
+                </h3>
+            </div>
+            <div class="modal-body">
+                <div>Are you sure you want to remove this quiz?</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" name="confirm-button" id="confirm-btn"
+                    class="modal-btn btn btn-sm">Confirm</button>
+                <button type="button" id="close-btn" class="modal-btn btn btn-sm" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- <div id="addQuestionModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Some text in the Modal..</p>
+        </div>
+    </div> -->
+
     <?php include('templates/footer.php'); ?>

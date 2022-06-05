@@ -98,27 +98,67 @@ $(document).ready(function() {
             {
                 data: null,
                 class: "center",
-                render: function(data, type, row) {
-                    return '<button class="dt-btn add-question-btn">&nbsp;Add Question&nbsp;</button>';
+                render: function(data, type, row, meta) {
+                    return `<button class="dt-btn add-question-btn" id="quiz-${row.quiz_id}">&nbsp;Add Question&nbsp;</button>`;
                 }
             },
             {
                 data: "",
                 class: "center",
-                render: function(data, type, row) {
-                    return '<button class="dt-btn view-report-btn">&nbsp;View Report&nbsp;</button>';
+                render: function(data, type, row, meta) {
+                    return `<button class="dt-btn view-report-btn" id="quiz-${row.quiz_id}">&nbsp;View Report&nbsp;</button>`;
                 }
             },
             {
                 data: "",
                 class: "center",
-                render: function(data, type, row) {
-                    return '<button class="dt-btn edit-btn">&nbsp;Edit&nbsp;  </button> <button class="dt-btn dlt-btn">&nbsp; Delete &nbsp;</button>';
+                render: function(data, type, row, meta) {
+                    return `<button class="dt-btn edit-btn" id="quiz-${row.quiz_id}">Edit&nbsp;</button> <button class="dt-btn dlt-btn" id="quiz-${row.quiz_id}">Delete&nbsp;</button>`;
                 }
             },
         ],
     });
     table.draw();
+
+
+    // delete modal
+    function deleteRow(quizId) {
+        $.ajax({
+            type: "GET",
+            url: `http://localhost/osp-assignment-2/api/question_set/delete-question-set.php?quizId=${quizId}`,
+            success: function() {
+                $("#deleteModal").removeClass("show");
+                table.ajax.reload()
+            },
+            error: function() {
+                alert('Failed to delete row! Reloading table...');
+                table.ajax.reload()
+            }
+        });
+
+    }
+
+    $("#deleteModal").delegate("#close-btn", "click", function() {
+        $("#deleteModal").removeClass("show");
+    });
+
+    $("#deleteModal").delegate(".x-btn", "click", function() {
+        $("#deleteModal").removeClass("show");
+    });
+
+    var quiz_id = '';
+
+    $("#quizTable").delegate(".dlt-btn", "click", function() {
+        $("#deleteModal").addClass("show");
+        $quiz_id = $(this).attr('id').substring(5);
+    });
+
+    $("#deleteModal").delegate("#confirm-btn", "click", function() {
+        console.log($quiz_id)
+        deleteRow($quiz_id)
+    });
+
+
 
 });
 </script>
