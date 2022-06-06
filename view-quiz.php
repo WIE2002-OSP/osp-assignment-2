@@ -17,23 +17,17 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-md-9">
-                                <h3 class="panel-title">Quiz List</h3>
-                            </div>
-                            <div class="col-md-3" align="right">
-                                <button type="button" id="add_button" class="btn btn-info btn-sm">Create</button>
+                                <h3 class="panel-title">Question List</h3>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="quizTable" class="table table-bordered table-striped table-hover">
+                            <table id="questionTable" class="table table-bordered table-striped table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Quiz Code</th>
-                                        <th>Quiz Title</th>
-                                        <th>Category</th>
-                                        <th>Question</th>
-                                        <th>Report</th>
+                                        <th>Question Title</th>
+                                        <th>Correct Option</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -48,7 +42,7 @@
     </div>
     <!-- The Modal -->
     <!-- Delete Modal -->
-    <div id="deleteModal" class="modal quiz">
+    <div id="deleteModal" class="modal view-quiz">
         <!-- Modal content -->
         <div class="modal-content">
             <div class="modal-header">
@@ -60,7 +54,7 @@
                 </h3>
             </div>
             <div class="modal-body">
-                <div>Are you sure you want to remove this quiz?</div>
+                <div>Are you sure you want to remove this question?</div>
             </div>
             <div class="modal-footer">
                 <button type="button" name="confirm-button" id="confirm-btn"
@@ -71,11 +65,11 @@
     </div>
 
     <!-- Add Question Modal -->
-    <div id="questionModal" class="quiz modal">
+    <div id="questionModal" class="view-quiz modal">
         <!-- Modal content -->
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Add Question</h3>
+                <h3>Edit Question</h3>
                 <h3 class="x-btn">
                     <div>
                         &times;
@@ -83,12 +77,11 @@
                 </h3>
             </div>
             <div class="modal-body">
-                <form method="POST" id="question_form">
+                <form method="POST" id="question_form_edit">
                     <div class="form-group">
                         <div class="row">
-                            <label class="col-md-2 text-left">Quiz Code<span class="text-danger">*</span></label>
                             <div class="col-md-8">
-                                <input class="disabled" type="text" name="question_code" id="question_code"
+                                <input class="disabled" hidden type="text" name="question_id" id="question_id"
                                     autocomplete="off" class="form-control" />
                             </div>
                         </div>
@@ -154,7 +147,7 @@
                     </div>
                     <div class="modal-footer">
                         <input type="submit" name="confirm-button" id="confirm-btn" class="modal-btn btn btn-sm"
-                            value="Confirm"></input>
+                            value="Update"></input>
                         <button type="button" id="close-btn" class="modal-btn btn btn-sm"
                             data-dismiss="modal">Close</button>
                     </div>

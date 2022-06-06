@@ -7,6 +7,15 @@
 * {
   user-select: none; /* Standard */
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+input.disabled {
+  pointer-events: none;
+  background: #f2f2f2 !important;
+}
 body {
   font-family: "Poppins", sans-serif;
   background: #fafafa;
@@ -552,6 +561,7 @@ nav ul li.items.selected a {
 
 #content > div > div.section-2 > div.card-list > div > a:hover {
   text-decoration: none;
+  filter: brightness(95%);
 }
 
 @keyframes fadein {
@@ -684,7 +694,7 @@ nav ul li.items.selected a {
 .card-list {
   display: flex;
   flex-direction: row;
-  column-gap: 15px;
+  column-gap: 7px;
   width: 100%;
   overflow-x: scroll;
   scroll-behavior: smooth;
@@ -1030,13 +1040,15 @@ nav ul li.items.selected a {
   /* color: white; */
 }
 
-#quizTable_paginate > span > a {
+#quizTable_paginate > span > a,
+#questionTable_paginate > span > a {
   background: #77a6f7;
   color: white !important;
   border-radius: 5px;
 }
 
-#quizTable_paginate > span > a:hover {
+#quizTable_paginate > span > a:hover,
+#questionTable_paginate > span > a:hover {
   filter: brightness(110%);
 }
 
@@ -1051,8 +1063,9 @@ nav ul li.items.selected a {
 }
 
 .dt-btn.view-report-btn {
-  background: #098805;
+  background: #0eaa09;
   color: white;
+  min-height: 50px;
 }
 
 .dt-btn.add-question-btn {
@@ -1060,12 +1073,12 @@ nav ul li.items.selected a {
   color: white;
 }
 .dt-btn.dlt-btn {
-  background: rgb(255, 71, 71);
+  background: #f66c6e;
   color: white;
 }
 
 .dt-btn.edit-btn {
-  background: rgb(71, 99, 255);
+  background: #2ca9d6;
   color: white;
 }
 /* ---------------------------------------------------
@@ -1136,13 +1149,12 @@ nav ul li.items.selected a {
 }
 
 .modal-btn#confirm-btn {
-  background: rgb(255, 71, 71);
+  background: rgb(71, 99, 255);
 }
 
 .modal-btn#close-btn {
-  background: rgb(71, 99, 255);
+  background: rgb(255, 71, 71);
 }
-/* Modal Footer */
 
 /* Add Animation */
 @keyframes animatetop {

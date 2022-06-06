@@ -72,7 +72,7 @@ $(document).ready(function() {
         window.location = "createQuiz.php"
     })
 
-    // data table stuff
+    // quiz data table 
     const table = $("#quizTable").DataTable({
         "retrieve": true,
         responsive: true,
@@ -99,7 +99,7 @@ $(document).ready(function() {
                 data: null,
                 class: "center",
                 render: function(data, type, row, meta) {
-                    return `<button class="dt-btn add-question-btn" id="quiz-${row.quiz_id}">&nbsp;Add Question&nbsp;</button>`;
+                    return `<button class="dt-btn add-question-btn" id="quiz-${row.quiz_id}">&nbsp;Add&nbsp;</button> <a href = "view-quiz.php?quizId=${row.quiz_id}"><button class="dt-btn edit-btn" id="quiz-${row.quiz_id}">&nbsp;View&nbsp;</button> </a>`;
                 }
             },
             {
@@ -113,29 +113,28 @@ $(document).ready(function() {
                 data: "",
                 class: "center",
                 render: function(data, type, row, meta) {
-                    return `<button class="dt-btn edit-btn" id="quiz-${row.quiz_id}">Edit&nbsp;</button> <button class="dt-btn dlt-btn" id="quiz-${row.quiz_id}">Delete&nbsp;</button>`;
+                    return `<button class="dt-btn dlt-btn" id="quiz-${row.quiz_id}">&nbsp;Delete&nbsp;</button>`;
                 }
             },
         ],
     });
-    table.draw();
 
 
     // delete modal
-    function deleteRow(quizId) {
+    function deleteQuiz(quizId) {
         $.ajax({
             type: "GET",
             url: `http://localhost/osp-assignment-2/api/question_set/delete-question-set.php?quizId=${quizId}`,
             success: function() {
                 $("#deleteModal").removeClass("show");
                 table.ajax.reload()
+                alert('Quiz is succesfully deleted!');
             },
             error: function() {
                 alert('Failed to delete row! Reloading table...');
                 table.ajax.reload()
             }
         });
-
     }
 
     $("#deleteModal").delegate("#close-btn", "click", function() {
@@ -153,12 +152,188 @@ $(document).ready(function() {
         $quiz_id = $(this).attr('id').substring(5);
     });
 
-    $("#deleteModal").delegate("#confirm-btn", "click", function() {
+    $("#deleteModal.quiz").delegate("#confirm-btn", "click", function() {
         console.log($quiz_id)
-        deleteRow($quiz_id)
+        deleteQuiz($quiz_id)
+    });
+
+    // question modal
+
+    $("#questionModal").delegate("#close-btn", "click", function() {
+        $("#questionModal").removeClass("show");
+    });
+
+    $("#questionModal").delegate(".x-btn", "click", function() {
+        $("#questionModal").removeClass("show");
+    });
+
+    $("#quizTable").delegate(".add-question-btn", "click", function() {
+        $quiz_id = $(this).attr('id').substring(5);
+        $("#questionModal.quiz").addClass("show");
+        $("#question_code").val($quiz_id);
+    });
+
+    $("#question_form").on('submit', function(e) {
+        e.preventDefault();
+        console.log($('#question_form').serialize());
+        $.ajax({
+            type: "POST",
+            url: `http://localhost/osp-assignment-2/api/question_set/add-question.php`,
+            data: $('#question_form').serialize(),
+            success: function() {
+                $("#questionModal.quiz").removeClass("show");
+                alert('Question is updated!');
+            },
+            error: function(xhr, status, error) {
+                alert('Failed to add question!');
+                $("#questionModal.quiz").removeClass("show");
+            }
+        });
+
+    })
+
+    // click view to see question table
+
+    //question data tables
+
+    let searchParams = new URLSearchParams(window.location.search)
+    searchParams.has('quizId') // true
+    let param = searchParams.get('quizId')
+    const question_table = $("#questionTable").DataTable({
+        "retrieve": true,
+        responsive: true,
+        ajax: {
+            type: "GET",
+            url: `http://localhost/osp-assignment-2/api/question_set/fetch-single-set-question.php?quizId=${param}`,
+            dataSrc: "data",
+            error: function(xhr, status, error) {
+                // alert(
+                //     "Failed to load Table! Please click the refresh button to reload the table."
+                // )
+            }
+        },
+        columns: [{
+                data: "question_name",
+                class: "center"
+            },
+            {
+                data: "correct_choice_number",
+                class: "center"
+            },
+            {
+                data: null,
+                class: "center",
+                render: function(data, type, row, meta) {
+                    return `<button class="dt-btn edit-btn" id="quiz-${row.question_id}">&nbsp;Edit&nbsp;</button> <button class="dt-btn dlt-btn" id="quiz-${row.question_id}">&nbsp;Delete&nbsp;</button> `;
+                }
+            },
+        ],
+    });
+    question_table.draw();
+
+    function deleteQuestion(questionId) {
+        $.ajax({
+            type: "GET",
+            url: `http://localhost/osp-assignment-2/api/question_set/delete-question.php?questionId=${questionId}`,
+            success: function() {
+                $("#deleteModal.view-quiz").removeClass("show");
+                question_table.ajax.reload()
+                alert('Question is deleted!');
+
+            },
+            error: function() {
+                alert('Failed to delete question! Reloading table...');
+                $("#questionTable").DataTable().ajax.reload()
+            }
+        });
+    }
+
+    var questionId = "";
+
+    // delete question 
+    $("#questionTable").delegate(".dlt-btn", "click", function() {
+        $("#deleteModal").addClass("show");
+        $questionId = $(this).attr('id').substring(5);
+    });
+
+    $("#deleteModal.view-quiz").delegate("#confirm-btn", "click", function() {
+        deleteQuestion($questionId);
+    });
+
+    $("#questionModal.view-quiz").delegate(".x-btn", "click", function() {
+        $("#questionModal.view-quiz").removeClass("show");
+    });
+
+    // edit question
+    $("#questionTable").delegate(".edit-btn", "click", function() {
+
+        $question_id = $(this).attr('id').substring(5);
+        $question_id = parseInt($question_id);
+        $("#questionModal.view-quiz").addClass("show");
+        $("#question_id").val($question_id);
+
+        function doAjaxQuestion(id) {
+            var question_data;
+            $.ajax({
+                async: false,
+                url: `http://localhost/osp-assignment-2/api/question_set/get-single-question.php?questionId=${id}`,
+                type: "GET",
+                dataType: "json",
+                success: function(data) {
+                    question_data = data
+                    return question_data;
+                }
+            });
+            return question_data;
+        }
+
+        var question_data = doAjaxQuestion($question_id);
+        $("#question_title").val(question_data.question_name);
+        $("#answer_option").val(question_data.correct_choice_number);
+
+        function doAjaxChoice(id) {
+            var question_data;
+            $.ajax({
+                async: false,
+                url: `http://localhost/osp-assignment-2/api/choice/get-choice.php?questionId=${id}`,
+                type: "GET",
+                dataType: "json",
+                success: function(data) {
+                    choice_data = data
+                    return choice_data;
+                }
+            });
+            return choice_data;
+        }
+
+        var choice_data = doAjaxChoice($question_id);
+        $("#option_title_1").val(choice_data[0].choice_name);
+        $("#option_title_2").val(choice_data[1].choice_name);
+        $("#option_title_3").val(choice_data[2].choice_name);
+        $("#option_title_4").val(choice_data[3].choice_name);
     });
 
 
+    $("#question_form_edit").on('submit', function(e) {
+        e.preventDefault();
+        console.log($('#question_form_edit').serialize());
+        $.ajax({
+            type: "POST",
+            url: `http://localhost/osp-assignment-2/api/question_set/edit-question.php`,
+            data: $('#question_form_edit').serialize(),
+            success: function() {
+                $("#questionModal.view-quiz").removeClass("show");
+                question_table.ajax.reload();
+                alert('Question is updated!');
+            },
+            error: function(xhr, status, error) {
+                alert('Failed to add question!');
+                question_table.ajax.reload();
+                $("#questionModal.view-quiz").removeClass("show");
+            }
+        });
+
+    })
 
 });
 </script>

@@ -54,9 +54,8 @@ $category = ["Mathematics", "Science", "Geography", "English", "Malay", "Physics
                         <?php foreach ($category as $key => $value) : ?>
                         <a href="singleCategory.php?category=<?php echo $value ?> " class="brand-text">
                             <div class="card" style="width: 18rem;">
-                                <img class="card-img-top"
-                                    src="https://online.stat.psu.edu/statprogram/sites/statprogram/files/2018-08/algebra-review.jpg"
-                                    alt="Card image cap">
+                                <img class="card-img-top" style="height:160px; border-bottom: 1px solid #f2f2f2"
+                                    src=<?php echo "img/" . $value . ".png" ?> alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title"><?php echo $value; ?>
                                     </h5>

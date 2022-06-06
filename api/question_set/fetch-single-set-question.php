@@ -1,17 +1,20 @@
 <?php
 require_once "../../config.php";
-$sql = "SELECT * FROM question_set;";
+$quizId = isset($_GET['quizId']) ? mysqli_real_escape_string($link, $_GET['quizId']) : "";
+$sql = "SELECT * FROM question WHERE question_set_id=$quizId;";
 $get_data_query = mysqli_query($link, $sql) or die(mysqli_error($link));
+
+
 if (mysqli_num_rows($get_data_query) != 0) {
     $result = array();
 
     while ($r = mysqli_fetch_array($get_data_query)) {
         extract($r);
-        $result[] = array("quiz_id" => $question_set_id, "quiz_name" => $question_set_name, 'quiz_category' => $category);
+        $result[] = array("question_id" => $question_id, "question_name" => $question_name, 'correct_choice_number' => $correct_choice_number);
     }
     $json = array("data" => $result);
 } else {
-    $json = array("error" => "To-Do not found!");
+    // $json = array("error" => "Question not found!");
 }
 @mysqli_close($link);
 // Set Content-type to JSON
