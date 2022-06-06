@@ -1,6 +1,8 @@
 <?php
 require_once "../../config.php";
-$sql = "SELECT * FROM question_set;";
+session_start();
+$user_id = $_SESSION["user_id"];
+$sql = "SELECT * FROM question_set WHERE creator_id=$user_id;";
 $get_data_query = mysqli_query($link, $sql) or die(mysqli_error($link));
 if (mysqli_num_rows($get_data_query) != 0) {
     $result = array();
@@ -11,7 +13,7 @@ if (mysqli_num_rows($get_data_query) != 0) {
     }
     $json = array("data" => $result);
 } else {
-    $json = array("error" => "To-Do not found!");
+    // $json = array("error" => "No data available");
 }
 @mysqli_close($link);
 // Set Content-type to JSON

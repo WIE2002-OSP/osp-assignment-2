@@ -1,4 +1,5 @@
-<?php include('templates/header.php'); ?>
+<?php require_once "config.php";
+include('templates/header.php'); ?>
 
 <head>
     <meta charset="UTF-8">

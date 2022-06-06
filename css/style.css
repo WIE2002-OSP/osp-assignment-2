@@ -969,6 +969,7 @@ nav ul li.items.selected a {
   align-items: center;
   justify-content: flex-start;
   column-gap: 20px;
+  min-height: 500px;
 }
 
 .single-category-quiz-item {

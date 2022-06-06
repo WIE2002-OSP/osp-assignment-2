@@ -80,6 +80,7 @@ $(document).ready(function() {
             url: "http://localhost/osp-assignment-2/api/question_set/fetch-question-set.php",
             dataSrc: "data",
             error: function(xhr, status, error) {
+                console.log(error)
                 alert("Failed to load Table! Please click the refresh button to reload the table.")
             }
         },
@@ -119,7 +120,7 @@ $(document).ready(function() {
         ],
     });
 
-
+    table.draw();
     // delete modal
     function deleteQuiz(quizId) {
         $.ajax({
