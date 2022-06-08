@@ -23,30 +23,44 @@
                     <div>Demographic</div>
                 </div>
 
+<?php
+	include('config.php');
+	$query = 'SELECT * FROM user';
+	$results = mysqli_query ($link, $query) or die ('Error in query : $query . ' . mysql_error());
+	
+	if (mysqli_num_rows ($results) > 0){
+		while ($row = mysqli_fetch_row ($results)){
+?>
+
                 <div class="profile-details">
                     <i class="fas fa-user-tie"></i>
-                    <label>Username: </label>
+                    <label>Username: <?php echo $row[1]; ?></label>
                 </div>
 
                 <div class="profile-details">
                     <i class="fa fa-envelope"></i>
-                    <label>Email address: </label>
+                    <label>Email address: <?php echo $row[2]; ?></label>
                 </div>
 
                 <div class="profile-details">
                     <i class="fa fa-phone"></i>
-                    <label>Telephone number: </label>
+                    <label>Telephone number: <?php echo $row[3]; ?></label>
                 </div>
 
                 <div class="profile-details">
                     <i class="fa fa-birthday-cake"></i>
-                    <label>Birthday: </label>
+                    <label>Birthday: <?php echo $row[6]; ?></label>
                 </div>
 
                 <div class="profile-details">
                     <i class="fa fa-check-square"></i>
-                    <label>Field of interest: </label>
-
+                    <label>Field of interest: <?php echo $row[5]; ?></label>
+<?php
+		}
+	}
+	mysqli_free_result ($results);
+	mysqli_close ($link);
+?>
                     <div class="profile-subtitle">
                         <i class="fa fa-check-circle"></i>
                         <div>Quiz Joined</div>
@@ -116,4 +130,5 @@
                 </div>
             </div>
         </div>
+
         <?php include('templates/footer.php'); ?>
