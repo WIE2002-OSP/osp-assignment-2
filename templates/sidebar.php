@@ -8,7 +8,7 @@
     </div>
     <div>
         <a href="profile.php" class="sidebar-user">
-            <img src="img/gaychin.jpg" alt="Avatar">
+            <img src="img/userImage.png" alt="Avatar">
             <div><?php echo $_SESSION["user_name"]; ?>
             </div>
         </a>
@@ -23,7 +23,7 @@
         <li class="sidebar-item">
             <a href="quiz.php">
                 <i class="fa-solid fa-chart-line"></i>
-                Quiz List
+                Quiz Created
             </a>
         </li>
         <li class="sidebar-item">

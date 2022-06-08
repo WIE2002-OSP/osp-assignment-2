@@ -1,8 +1,8 @@
 <?php
 require_once "../../config.php";
 session_start();
-$user_id = $_SESSION["user_id"];
-$sql = "SELECT * FROM question_set WHERE creator_id=$user_id;";
+$question_set_id = $_GET["question_set_id"];
+$sql = "SELECT * FROM question_set WHERE question_set_id=$question_set_id;";
 $get_data_query = mysqli_query($link, $sql) or die(mysqli_error($link));
 if (mysqli_num_rows($get_data_query) != 0) {
     $result = array();
@@ -13,7 +13,7 @@ if (mysqli_num_rows($get_data_query) != 0) {
     }
     $json = array("data" => $result);
 } else {
-
+    $json = array("data" => array());
     // $json = array("error" => "No data available");
 }
 @mysqli_close($link);

@@ -8,12 +8,12 @@ $questionId = isset($_GET['questionId']) ? mysqli_real_escape_string($link, $_GE
 $sql = "SELECT * FROM question WHERE question_id=$questionId;";
 
 // get the query result
-$result = mysqli_query($link, $sql);
+$get_data_query = mysqli_query($link, $sql);
 
 // fetch result
-$question = mysqli_fetch_assoc($result);
+$question = mysqli_fetch_assoc($get_data_query);
 
-$get_data_query = mysqli_query($link, $sql);
+// $get_data_query = mysqli_query($link, $sql);
 if ($get_data_query) {
     $json = array("question_name" => $question["question_name"], "correct_choice_number" => $question["correct_choice_number"]);
 } else {

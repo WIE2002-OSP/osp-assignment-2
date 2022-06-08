@@ -58,13 +58,23 @@ if (isset($_GET['category'])) {
 
             <div class="single-category-container-two">
                 <?php foreach ($question_set as $item) : ?>
-                <div class="single-category-quiz-item">
-                    <div class="item-category">
-                        Quiz
+                <div id=<?php echo $item["question_set_id"]; ?> class="single-category-quiz-item">
+                    <div>
+                        <div class="item-category">
+                            Quiz
+                        </div>
+                        <div class="item-title"><?php echo $item["question_set_name"]; ?>
+                        </div>
                     </div>
-                    <div class="item-title"><?php echo $item["question_set_name"]; ?>
+                    <div class="category-join-quiz-btn">
+                        <?php $name = str_replace(" ", "%20", $item['question_set_name']); ?>
+
+                        <a
+                            href=<?php echo "join-quiz.php?quizId=" . $item['question_set_id'] . "&quizName=" . $name . "&quizCategory=" . $category; ?>>Join</a>
                     </div>
+
                 </div>
+
                 <?php endforeach; ?>
             </div>
 
@@ -73,6 +83,6 @@ if (isset($_GET['category'])) {
     </div>
 </div>
 <?php
-print_r($question_set);; ?>
+?>
 
 <?php include('templates/footer.php'); ?>

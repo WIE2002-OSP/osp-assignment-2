@@ -34,11 +34,17 @@ $category = ["Mathematics", "Science", "Geography", "English", "Malay", "Physics
                 <div class="section-1">
                     <div class="white-div">
                         <div class="join-btn-input-wrapper">
-                            <div><input id="join-input" type="text" placeholder="Enter a join code"><button
-                                    id="join-btn" class="home-btn">
+                            <div>
+                                <input id="join-input" type="text" pattern="\d*" maxlength="6"
+                                    placeholder="Enter a join code"><button id="join-btn" class="home-btn">
                                     <div>JOIN</div>
-                                </button></div>
+                                </button>
+                            </div>
+                            <div class="invalid-quiz-error">
+                                Invalid Quiz Code
+                            </div>
                         </div>
+
                     </div>
                     <div class="white-div">
                         <button id="create-btn" class="home-btn"><i class="fa-solid fa-circle-plus"></i> Create

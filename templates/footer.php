@@ -183,7 +183,7 @@ $(document).ready(function() {
             data: $('#question_form').serialize(),
             success: function() {
                 $("#questionModal.quiz").removeClass("show");
-                alert('Question is updated!');
+                alert('Question is added!');
             },
             error: function(xhr, status, error) {
                 alert('Failed to add question!');
@@ -289,6 +289,7 @@ $(document).ready(function() {
         }
 
         var question_data = doAjaxQuestion($question_id);
+        console.log(question_data);
         $("#question_title").val(question_data.question_name);
         $("#answer_option").val(question_data.correct_choice_number);
 
@@ -334,6 +335,37 @@ $(document).ready(function() {
             }
         });
 
+    })
+
+    $("#join-btn").click(() => {
+        var value = $("#join-input").val();
+        console.log(value)
+
+        function ajax(id) {
+            var question_data;
+            $.ajax({
+                async: false,
+                url: `http://localhost/osp-assignment-2/api/question_set/get-quiz.php?question_set_id=${id}`,
+                type: "GET",
+                dataType: "json",
+                success: function(data) {
+                    question_data = data
+                    return question_data;
+                }
+            });
+            return question_data;
+        }
+
+        var question_set_id = ajax(value);
+        console.log(question_set_id.data);
+        if (question_set_id.data.length == 0) {
+            console.log("Invalid Quiz Code")
+            $(".join-btn-input-wrapper").addClass("show");
+            $(".invalid-quiz-error").addClass("show");
+        } else {
+            window.location.href =
+                `join-quiz.php?quizId=${question_set_id.data[0].quiz_id}&quizName=${question_set_id.data[0].quiz_name}&quizCategory=${question_set_id.data[0].quiz_category}`
+        }
     })
 
 });

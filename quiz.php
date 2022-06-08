@@ -17,7 +17,7 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-md-9">
-                                <h3 class="panel-title">Quiz List</h3>
+                                <h3 class="panel-title">Quiz Created</h3>
                             </div>
                             <div class="col-md-3" align="right">
                                 <button type="button" id="add_button" class="btn btn-info btn-sm">Create</button>
