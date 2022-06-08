@@ -36,6 +36,14 @@ You can also join quiz by heading into single category quiz page and click join 
 
 ![image](https://user-images.githubusercontent.com/56284497/172675635-63d8ed0f-77d3-443d-addc-2adafefcba69.png)
 
+Here is the interface user will see when joining a quiz successfully. 
+
+![image](https://user-images.githubusercontent.com/56284497/172678841-fe8bcb90-a360-48f1-ae47-185c29c6b031.png)
+
+After finishing the quiz, a result page will be displayed. 
+
+![image](https://user-images.githubusercontent.com/56284497/172679008-1ac1c28a-0d2b-4323-afc4-439e7de888b1.png)
+
 Each user can only join same kind of quiz once. If user attempts to join again page below will be shown.
 
 ![image](https://user-images.githubusercontent.com/56284497/172675743-caff6b75-3a59-44a2-8899-9ae6c5a57aaf.png)
