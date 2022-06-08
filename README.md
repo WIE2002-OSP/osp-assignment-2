@@ -1,6 +1,9 @@
 # Simple Quiz App
 A simple quiz application created using php, mysql, bootstrap, datatable.
 
+# Home page
+![image](https://user-images.githubusercontent.com/56284497/172679666-e8e47691-6daa-47a7-8bb4-40b2f167ad40.png)
+
 # Main Functionalities
 ## Create Quiz
 ![image](https://user-images.githubusercontent.com/56284497/172676067-16705db3-a1be-4993-9522-6b294cc0dde4.png)
