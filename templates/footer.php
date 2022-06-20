@@ -28,6 +28,7 @@ if (cardList) {
     });
 }
 $(document).ready(function() {
+    $BASE_URL = 'http://localhost/osp-assignment/osp-assignment-2'
     $(".quotes div").addClass("load");
     var current = location.pathname;
     $('nav')
@@ -81,7 +82,7 @@ $(document).ready(function() {
         "retrieve": true,
         responsive: true,
         ajax: {
-            url: "http://localhost/osp-assignment-2/api/question_set/fetch-question-set.php",
+            url: `${BASE_URL}/api/question_set/fetch-question-set.php`,
             dataSrc: "data",
             error: function(xhr, status, error) {
                 console.log(error)
@@ -128,7 +129,7 @@ $(document).ready(function() {
     function deleteQuiz(quizId) {
         $.ajax({
             type: "GET",
-            url: `http://localhost/osp-assignment-2/api/question_set/delete-question-set.php?quizId=${quizId}`,
+            url: `${BASE_URL}/api/question_set/delete-question-set.php?quizId=${quizId}`,
             success: function() {
                 $("#deleteModal").removeClass("show");
                 table.ajax.reload()
@@ -182,7 +183,7 @@ $(document).ready(function() {
         console.log($('#question_form').serialize());
         $.ajax({
             type: "POST",
-            url: `http://localhost/osp-assignment-2/api/question_set/add-question.php`,
+            url: `${BASE_URL}/api/question_set/add-question.php`,
             data: $('#question_form').serialize(),
             success: function() {
                 $("#questionModal.quiz").removeClass("show");
@@ -208,7 +209,7 @@ $(document).ready(function() {
         responsive: true,
         ajax: {
             type: "GET",
-            url: `http://localhost/osp-assignment-2/api/question_set/fetch-single-set-question.php?quizId=${param}`,
+            url: `${BASE_URL}/api/question_set/fetch-single-set-question.php?quizId=${param}`,
             dataSrc: "data",
             error: function(xhr, status, error) {
                 // alert(
@@ -244,7 +245,7 @@ $(document).ready(function() {
         responsive: true,
         ajax: {
             type: "GET",
-            url: `http://localhost/osp-assignment-2/api/question_set/fetch-single-set-analytics.php?quizId=${param}`,
+            url: `${BASE_URL}/api/question_set/fetch-single-set-analytics.php?quizId=${param}`,
             dataSrc: "data",
             error: function(xhr, status, error) {
                 // alert(
@@ -276,7 +277,7 @@ $(document).ready(function() {
     function deleteQuestion(questionId) {
         $.ajax({
             type: "GET",
-            url: `http://localhost/osp-assignment-2/api/question_set/delete-question.php?questionId=${questionId}`,
+            url: `${BASE_URL}/api/question_set/delete-question.php?questionId=${questionId}`,
             success: function() {
                 $("#deleteModal.view-quiz").removeClass("show");
                 question_table.ajax.reload()
@@ -318,7 +319,7 @@ $(document).ready(function() {
             var question_data;
             $.ajax({
                 async: false,
-                url: `http://localhost/osp-assignment-2/api/question_set/get-single-question.php?questionId=${id}`,
+                url: `${BASE_URL}/api/question_set/get-single-question.php?questionId=${id}`,
                 type: "GET",
                 dataType: "json",
                 success: function(data) {
@@ -338,7 +339,7 @@ $(document).ready(function() {
             var question_data;
             $.ajax({
                 async: false,
-                url: `http://localhost/osp-assignment-2/api/choice/get-choice.php?questionId=${id}`,
+                url: `${BASE_URL}/api/choice/get-choice.php?questionId=${id}`,
                 type: "GET",
                 dataType: "json",
                 success: function(data) {
@@ -362,7 +363,7 @@ $(document).ready(function() {
         console.log($('#question_form_edit').serialize());
         $.ajax({
             type: "POST",
-            url: `http://localhost/osp-assignment-2/api/question_set/edit-question.php`,
+            url: `${BASE_URL}/api/question_set/edit-question.php`,
             data: $('#question_form_edit').serialize(),
             success: function() {
                 $("#questionModal.view-quiz").removeClass("show");
@@ -386,7 +387,7 @@ $(document).ready(function() {
             var question_data;
             $.ajax({
                 async: false,
-                url: `http://localhost/osp-assignment-2/api/question_set/get-quiz.php?question_set_id=${id}`,
+                url: `${BASE_URL}/api/question_set/get-quiz.php?question_set_id=${id}`,
                 type: "GET",
                 dataType: "json",
                 success: function(data) {
