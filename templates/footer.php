@@ -6,6 +6,10 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
     integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
 </script>
+
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js">
+</script>
 <!-- jQuery Custom Scroller CDN -->
 <script
     src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
@@ -72,7 +76,7 @@ $(document).ready(function() {
         window.location = "createQuiz.php"
     })
 
-    // quiz data table 
+    // quiz data table
     const table = $("#quizTable").DataTable({
         "retrieve": true,
         responsive: true,
@@ -107,7 +111,7 @@ $(document).ready(function() {
                 data: "",
                 class: "center",
                 render: function(data, type, row, meta) {
-                    return `<button class="dt-btn view-report-btn" id="quiz-${row.quiz_id}">&nbsp;View Report&nbsp;</button>`;
+                    return `<a href = "view-analytics.php?quizId=${row.quiz_id}"><button class="dt-btn view-report-btn" id="quiz-${row.quiz_id}">&nbsp;View Analytics&nbsp;</button> </a>`;
                 }
             },
             {
@@ -119,7 +123,6 @@ $(document).ready(function() {
             },
         ],
     });
-
     table.draw();
     // delete modal
     function deleteQuiz(quizId) {
@@ -232,6 +235,44 @@ $(document).ready(function() {
     });
     question_table.draw();
 
+    // Analytics part
+    let searchParamsA = new URLSearchParams(window.location.search)
+    searchParamsA.has('quizId') // true
+    let paramA = searchParamsA.get('quizId')
+    const analytics_table = $("#analyticsTable").DataTable({
+        "retrieve": true,
+        responsive: true,
+        ajax: {
+            type: "GET",
+            url: `http://localhost/osp-assignment-2/api/question_set/fetch-single-set-analytics.php?quizId=${param}`,
+            dataSrc: "data",
+            error: function(xhr, status, error) {
+                // alert(
+                //     "Failed to load Table! Please click the refresh button to reload the table."
+                // )
+            }
+        },
+        columns: [{
+                data: "question_name",
+                class: "center"
+            },
+            {
+                data: "correct_people_amount",
+                class: "center"
+            },
+            {
+                data: "wrong_people_amount",
+                class: "center"
+
+            },
+            {
+                data: "correct_per",
+                class: "center"
+            },
+        ],
+    });
+    analytics_table.draw();
+
     function deleteQuestion(questionId) {
         $.ajax({
             type: "GET",
@@ -251,7 +292,7 @@ $(document).ready(function() {
 
     var questionId = "";
 
-    // delete question 
+    // delete question
     $("#questionTable").delegate(".dlt-btn", "click", function() {
         $("#deleteModal").addClass("show");
         $questionId = $(this).attr('id').substring(5);
