@@ -80,9 +80,10 @@ for ($i = 0; $i < count($all_questions); $i++) {
                             <?php } ?>
                         </div>
                         <?php if ($is_correct) :; ?>
-                        <div style="font-weight:bold; color:#0FBB0A">You answer this question correctly!</div>
+                        <div style="font-weight:bold; color:#0FBB0A">You pick <?php echo $correct_choice; ?>. You answer
+                            this question correctly!</div>
                         <?php else : ?>
-                        <div style="font-weight:bold; color:#F66C6E">You pick &nbsp;
+                        <div style="font-weight:bold; color:#F66C6E">You pick&nbsp;
                             <?php echo $answer_chosen; ?>
                             . The correct answer is <?php echo $correct_choice; ?>
                         </div>

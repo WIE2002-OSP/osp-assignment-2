@@ -1127,6 +1127,7 @@ a.review-btn:hover {
   /* color: white; */
 }
 
+#analyticsTable_paginate > span > a,
 #quizTable_paginate > span > a,
 #questionTable_paginate > span > a {
   background: #77a6f7;
@@ -1259,6 +1260,16 @@ a.review-btn:hover {
     top: 100px;
     opacity: 1;
   }
+}
+
+/* ---------------------------------------------------
+    CHART
+----------------------------------------------------- */
+
+.chart-table {
+  width: 100%;
+  margin-bottom: 50px;
+  padding: 100px 50px;
 }
 
 /* ---------------------------------------------------
@@ -1470,8 +1481,6 @@ a.review-btn:hover {
 
 .submit-answer:hover {
   filter: brightness(110%);
-}
-@media (max-width: 768px) {
 }
 
 /* ---------------------------------------------------

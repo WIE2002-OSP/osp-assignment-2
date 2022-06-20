@@ -13,264 +13,281 @@
 
         <!-- Page Content  -->
         <div id="content">
-          <div id="">
-            <!-- Navbar  -->
-            <?php include('templates/navbar.php'); ?>
-            <div class="quiz-list col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h3 class="panel-title">Analytics</h3>
+            <div id="" style="width:100%">
+                <!-- Navbar  -->
+                <?php include('templates/navbar.php'); ?>
+                <div class="quiz-list">
+
+                    <div class="card" style="margin-bottom:50px;">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <h3 class="panel-title">Analytics</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="analyticsTable" class="table table-bordered table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Question Title</th>
+                                            <th>Number Of People With Correct Answer</th>
+                                            <th>Number Of People With Wrong Answer</th>
+                                            <th>Correct Answer Percentage (%)</th>
+                                        </tr>
+                                    </thead>
+                                </table>
                             </div>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table id="analyticsTable" class="table table-bordered table-striped table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Question Title</th>
-                                        <th>Number Of People With Correct Answer</th>
-                                        <th>Number Of People With Wrong Answer</th>
-                                        <th>Correct Answer Percentage</th>
-                                    </tr>
-                                </thead>
-                            </table>
+
+
+                    <div class="card" style="margin-bottom:50px;">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title" style="margin-bottom:0px !important">Number of students by
+                                    Answer</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart">
+                                    <canvas id="chartjs-bar"></canvas>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-						<div class="col-md-6">
-							<div class="card flex-fill w-100">
-								<div class="card-header">
-									<h5 class="card-title">Line Chart</h5>
-									<h6 class="card-subtitle text-muted">Comparison</h6>
-								</div>
-								<div class="card-body">
-									<div class="chart">
-										<canvas id="chartjs-line"></canvas>
-									</div>
-								</div>
-							</div>
-						</div>
+                    <div class="card" style="margin-bottom:50px;">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title" style="margin-bottom:0px !important">Number of Students by Scores
+                                </h5>
+                                <h6 class="card-subtitle" style="color:white"></h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart chart-sm">
+                                    <canvas id="chartjs-pie"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="col-md-6">
-              <div class="card">
-                <div class="card-header">
-                  <h5 class="card-title">Bar Chart</h5>
-                  <h6 class="card-subtitle text-muted">Number of students by Answer.</h6>
-                </div>
-                <div class="card-body">
-                  <div class="chart">
-                    <canvas id="chartjs-bar"></canvas>
-                  </div>
-                </div>
-              </div>
-            </div>
+                    <!-- <div class="card" style="margin-bottom:50px;">
+                        <div class="card flex-fill w-100">
+                            <div class="card-header">
+                                <h5 class="card-title">Line Chart</h5>
+                                <h6 class="card-subtitle" style="color:white">Comparison</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart">
+                                    <canvas id="chartjs-line"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="col-md-6">
-              <div class="card">
-                <div class="card-header">
-                  <h5 class="card-title">Doughnut Chart</h5>
-                  <h6 class="card-subtitle text-muted">Percentage of Answer by Category</h6>
+               
+
+                    <div class="card" style="margin-bottom:50px;">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">Doughnut Chart</h5>
+                                <h6 class="card-subtitle" style="color:white">Percentage of Answer by Category</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart chart-sm">
+                                    <canvas id="chartjs-doughnut"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    -->
                 </div>
-                <div class="card-body">
-                  <div class="chart chart-sm">
-                    <canvas id="chartjs-doughnut"></canvas>
-                  </div>
-                </div>
-              </div>
             </div>
-            <div class="col-12 col-lg-6">
-							<div class="card">
-								<div class="card-header">
-									<h5 class="card-title">Pie Chart</h5>
-									<h6 class="card-subtitle text-muted"></h6>
-								</div>
-								<div class="card-body">
-									<div class="chart chart-sm">
-										<canvas id="chartjs-pie"></canvas>
-									</div>
-								</div>
-							</div>
-						</div>
-            </div>
-        </div>
         </div>
     </div>
 
 
     <script>
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const quizId = urlParams.get('quizId')
+    var question_data;
+    let option1Arr;
+    let option2Arr;
+    let option3Arr;
+    let option4Arr;
 
-    		document.addEventListener("DOMContentLoaded", function() {
-          // Line chart
-    			new Chart(document.getElementById("chartjs-line"), {
-    				type: "line",
-    				data: {
-    					labels:  ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    					datasets: [{
-    						label: "Sales ($)",
-    						fill: true,
-    						backgroundColor: "transparent",
-    						borderColor: 'rgb(255, 99, 132)',
-    						data: [2115, 1562, 1584, 1892, 1487, 2223, 2966, 2448, 2905, 3838, 2917, 3327]
-    					}, {
-    						label: "Orders",
-    						fill: true,
-    						backgroundColor: "transparent",
-    						borderColor: "#adb5bd",
-    						borderDash: [4, 4],
-    						data: [958, 724, 629, 883, 915, 1214, 1476, 1212, 1554, 2128, 1466, 1827]
-    					}]
-    				},
-    				options: {
-    					maintainAspectRatio: false,
-    					legend: {
-    						display: false
-    					},
-    					tooltips: {
-    						intersect: false
-    					},
-    					hover: {
-    						intersect: true
-    					},
-    					plugins: {
-    						filler: {
-    							propagate: false
-    						}
-    					},
-    					scales: {
-    						xAxes: [{
-    							reverse: true,
-    							gridLines: {
-    								color: "rgba(0,0,0,0.05)"
-    							}
-    						}],
-    						yAxes: [{
-    							ticks: {
-    								stepSize: 500
-    							},
-    							display: true,
-    							borderDash: [5, 5],
-    							gridLines: {
-    								color: "rgba(0,0,0,0)",
-    								fontColor: "#fff"
-    							}
-    						}]
-    					}
-    				}
-    			});
-    		});
-    	</script>
+    $(document).ready(function() {
 
-    <script>
-    		document.addEventListener("DOMContentLoaded", function() {
-    			// Bar chart
-    			new Chart(document.getElementById("chartjs-bar"), {
-    				type: "bar",
-    				data: {
-    					labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    					datasets: [{
-    						label: "Last year",
-    						backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    						borderColor: 'rgb(255, 99, 132)',
-    						hoverBackgroundColor: 'rgba(255, 99, 132, 0.5)',
-    						hoverBorderColor: 'rgba(255, 99, 132, 0.5)',
-    						data: [54, 67, 41, 55, 62, 45, 55, 73, 60, 76, 48, 79],
-    						barPercentage: .75,
-    						categoryPercentage: .5
-    					}, {
-    						label: "This year",
-    						backgroundColor: "#dee2e6",
-    						borderColor: "#dee2e6",
-    						hoverBackgroundColor: "#dee2e6",
-    						hoverBorderColor: "#dee2e6",
-    						data: [69, 66, 24, 48, 52, 51, 44, 53, 62, 79, 51, 68],
-    						barPercentage: .75,
-    						categoryPercentage: .5
-    					}]
-    				},
-    				options: {
-    					maintainAspectRatio: false,
-    					legend: {
-    						display: false
-    					},
-    					scales: {
-    						yAxes: [{
-    							gridLines: {
-    								display: false
-    							},
-    							stacked: false,
-    							ticks: {
-    								stepSize: 20
-    							}
-    						}],
-    						xAxes: [{
-    							stacked: false,
-    							gridLines: {
-    								color: "transparent"
-    							}
-    						}]
-    					}
-    				}
-    			});
-    		});
-    	</script>
-    	<script>
-    		document.addEventListener("DOMContentLoaded", function() {
-    			// Doughnut chart
-    			new Chart(document.getElementById("chartjs-doughnut"), {
-    				type: "doughnut",
-    				data: {
-    					labels: ["Social", "Search Engines", "Direct", "Other"],
-    					datasets: [{
-    						data: [260, 125, 54, 146],
-    						backgroundColor: [
-    							'rgb(75, 192, 192)',
-    							'rgba(75, 192, 192, 0.5)',
-    							'rgb(255, 99, 132)',
-    							"#dee2e6"
-    						],
-    						borderColor: "transparent"
-    					}]
-    				},
-    				options: {
-    					maintainAspectRatio: false,
-    					cutoutPercentage: 65,
-    					legend: {
-    						display: false
-    					}
-    				}
-    			});
-    		});
-    	</script>
-    	<script>
-    		document.addEventListener("DOMContentLoaded", function() {
-    			// Pie chart
-    			new Chart(document.getElementById("chartjs-pie"), {
-    				type: "pie",
-    				data: {
-    					labels: ["Social", "Search Engines", "Direct", "Other"],
-    					datasets: [{
-    						data: [260, 125, 54, 146],
-    						backgroundColor: [
-    							'rgb(75, 192, 192)',
-    							'rgb(255, 205, 86)',
-    							'rgb(255, 99, 132)',
-    							"#dee2e6"
-    						],
-    						borderColor: "transparent"
-    					}]
-    				},
-    				options: {
-    					maintainAspectRatio: false,
-    					legend: {
-    						display: false
-    					}
-    				}
-    			});
-    		});
-    	</script>
+
+        function doAjaxQuestion() {
+            var question_data;
+            $.ajax({
+                async: false,
+                url: `http://localhost/osp-assignment-2/api/question_set/fetch-single-set-question.php?quizId=${quizId}`,
+                type: "GET",
+                dataType: "json",
+                success: function(data) {
+                    question_data = data
+                    return question_data;
+                }
+            });
+            return question_data.data;
+        }
+
+        function fetchAnswerChoice(questionId) {
+            var answer_choice_data;
+            $.ajax({
+                async: false,
+                url: `http://localhost/osp-assignment-2/api/question_set/fetch-question-answer.php?questionId=${questionId}`,
+                type: "GET",
+                dataType: "json",
+                success: function(data) {
+                    answer_choice_data = data
+                    return answer_choice_data;
+                }
+            });
+            return answer_choice_data.data;
+        }
+
+
+        function fetchQuestionSetScore(questionId) {
+            var question_set_score_data;
+            $.ajax({
+                async: false,
+                url: `http://localhost/osp-assignment-2/api/question_set/fetch-question-set-score.php?quizId=${quizId}`,
+                type: "GET",
+                dataType: "json",
+                success: function(data) {
+                    question_set_score_data = data
+                    return question_set_score_data;
+                }
+            });
+            return question_set_score_data.data;
+        }
+
+        question_data = doAjaxQuestion();
+        questionDataArr = [];
+        option1Arr = Array(question_data.length).fill(0)
+        option2Arr = Array(question_data.length).fill(0);
+        option3Arr = Array(question_data.length).fill(0);
+        option4Arr = Array(question_data.length).fill(0);
+
+        question_data.forEach((data, index) => {
+            let label = `Q${index+1}`
+            questionDataArr.push(label)
+            answer_choice_data = fetchAnswerChoice(data.question_id);
+            for (let i = 0; i < answer_choice_data.length; i++) {
+                let choice = answer_choice_data[i];
+                console.log(choice)
+                if (choice == "1") {
+                    option1Arr[index]++;
+                } else if (choice == "2") {
+                    option2Arr[index]++;
+                } else if (choice == "3") {
+                    option3Arr[index]++;
+                } else {
+                    option4Arr[index]++;
+                }
+
+            }
+
+        })
+        question_set_score_data = fetchQuestionSetScore();
+        let score_arr = Array(4).fill(0);
+        question_set_score_data.forEach((score) => {
+            let scorePercentage = score / question_data.length * 100
+            if (scorePercentage >= 0 && scorePercentage <= 40) {
+                score_arr[0]++;
+            } else if (scorePercentage >= 41 && scorePercentage <= 60) {
+                score_arr[1]++;
+            } else if (scorePercentage >= 61 && scorePercentage <= 80) {
+                score_arr[2]++;
+            } else {
+                score_arr[3]++;
+            }
+        })
+
+        let myChart = new Chart(document.getElementById("chartjs-bar"), {
+            type: "bar",
+            data: {
+                labels: questionDataArr,
+                datasets: [{
+                    label: "Option 1",
+                    backgroundColor: '#1083ee',
+                    borderColor: '#1083ee',
+                    hoverBackgroundColor: '#1083ee',
+                    hoverBorderColor: '#1083ee',
+                    data: option1Arr,
+                    barPercentage: .75,
+                    categoryPercentage: .5
+                }, {
+                    label: "Option 2",
+                    backgroundColor: "#F7F700",
+                    borderColor: "#F7F700",
+                    hoverBackgroundColor: "#F7F700",
+                    hoverBorderColor: "#F7F700",
+                    data: option2Arr,
+                    barPercentage: .75,
+                    categoryPercentage: .5
+                }, {
+                    label: "Option 3",
+                    backgroundColor: "#0eaa09",
+                    borderColor: "#0eaa09",
+                    hoverBackgroundColor: "#0eaa09",
+                    hoverBorderColor: "#0eaa09",
+                    data: option3Arr,
+                    barPercentage: .75,
+                    categoryPercentage: .5
+                }, {
+                    label: "Option 4",
+                    backgroundColor: "#f66c6e",
+                    borderColor: "#f66c6e",
+                    hoverBackgroundColor: "#f66c6e",
+                    hoverBorderColor: "#f66c6e",
+                    data: option4Arr,
+                    barPercentage: .75,
+                    categoryPercentage: .5
+                }]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    display: false
+                },
+            }
+        });
+
+        new Chart(document.getElementById("chartjs-pie"), {
+            type: "pie",
+            data: {
+                labels: ["0-40", "41-60", "61-80", "81-100"],
+                datasets: [{
+                    data: score_arr,
+                    backgroundColor: [
+                        '#1083ee',
+                        '#F7F700',
+                        '#0eaa09',
+                        "#f66c6e"
+                    ],
+                    borderColor: "#F3F6F9"
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                legend: {
+                    display: false
+                }
+            }
+        });
+
+    })
+    </script>
+
+
+
+
 
     <?php include('templates/footer.php'); ?>
