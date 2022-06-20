@@ -7,8 +7,7 @@
     integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
 </script>
 
-<script
-    src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js">
 </script>
 <!-- jQuery Custom Scroller CDN -->
 <script
@@ -28,7 +27,7 @@ if (cardList) {
     });
 }
 $(document).ready(function() {
-    $BASE_URL = 'http://localhost/osp-assignment/osp-assignment-2'
+    let BASE_URL = 'http://localhost/osp-assignment-2'
     $(".quotes div").addClass("load");
     var current = location.pathname;
     $('nav')

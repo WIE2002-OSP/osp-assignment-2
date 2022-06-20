@@ -132,11 +132,11 @@ if (isset($_POST['update-pw'])) {
                 </input>
             </form>
 
-            <div class="setting-subtitle">
+            <!-- <div class="setting-subtitle">
                 <i class="fa-solid fa-language"></i>
                 <div>Language</div>
-            </div>
-            <label>Select preferred language</label>
+            </div> -->
+            <!-- <label>Select preferred language</label>
             <div class="dropdown">
                 <button type="button" class="btn  setting-language-btn dropdown-toggle" data-toggle="dropdown">
                     <img src="img/us-flag.svg" alt="">
@@ -153,7 +153,7 @@ if (isset($_POST['update-pw'])) {
                         <div>Malay</div>
                     </a>
                 </div>
-            </div>
+            </div> -->
             <div class="setting-subtitle">
                 <i class="fa-solid fa-lock"></i>
                 <div>Password</div>
