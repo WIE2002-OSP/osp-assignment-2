@@ -1,5 +1,8 @@
 <?php include('templates/header.php'); ?>
-<?php session_start(); ?>
+<?php 
+    session_start(); 
+    $category = ["Mathematics", "Science", "Geography", "English", "Malay", "Physics", "Biology", "Japanese"]; ?>
+?>
 
 <body>
     <!-- Sidebar  -->
@@ -72,35 +75,21 @@
                         <div>Quiz Joined</div>
                     </div>
 
-                    <div class="profile-quiz">
-                        <div class="quiz">
-                            <div class="row">
-                                <div class="column">
-                                    <img class="card-img-top"
-                                        src="https://online.stat.psu.edu/statprogram/sites/statprogram/files/2018-08/algebra-review.jpg"
-                                        alt="Card image cap" width="300" height="150">
-                                    <div class="quiz-body">
-                                        <h6 class="quiz-title">Mathematics</h6>
+                    <div class="">
+                        <div class="">
+                            <div class="card-list">
+                                <?php foreach($category as $key => $value) : ?>
+                                    <div class="column">
+                                    <a href="joined-quiz-category.php?category=<?php echo $value ?> " class="brand-text">
+                                        <div class="card" style="width: 18rem;">
+                                            <img class="card-img-top" style="height:160px; border-bottom: 1px solid #f2f2f2" src=<?php echo "img/" . $value . ".png" ?> alt="Card image cap">
+                                                <div class="card-body">
+                                                    <h5 class="card-title"><?php echo $value; ?></h5>
+                                                </div>
+			                            </div>
+                                    </a>
                                     </div>
-                                </div>
-
-                                <div class="column">
-                                    <img class="card-img-top"
-                                        src="https://cdn.britannica.com/35/142335-131-4742621E/molecule-Model-Atom-Biology-entertainment-Molecular-Structure-2010.jpg"
-                                        alt="Card image cap" width="400" height="150">
-                                    <div class="quiz-body">
-                                        <h6 class="quiz-title">Science</h6>
-                                    </div>
-                                </div>
-
-                                <div class="column">
-                                    <img class="card-img-top"
-                                        src="https://world-geography-games.com/img/world-countries.png"
-                                        alt="Card image cap" width="400" height="150">
-                                    <div class="quiz-body">
-                                        <h6 class="quiz-title">Geography</h6>
-                                    </div>
-                                </div>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>
@@ -110,26 +99,21 @@
                         <div>Quiz Created</div>
                     </div>
 
-                    <div class="profile-quiz">
-                        <div class="quiz">
-                            <div class="row">
-                                <div class="column">
-                                    <img class="card-img-top"
-                                        src="https://www.environmentalscience.org/wp-content/uploads/2018/08/physics-640x416.jpg"
-                                        alt="Card image cap" width="300" height="160">
-                                    <div class="quiz-body">
-                                        <h6 class="quiz-title">Physics</h6>
+                    <div class="">
+                        <div class="">
+                            <div class="card-list">
+                                <?php foreach($category as $key => $value) : ?>
+                                    <div class="column">
+                                    <a href="created-quiz-category.php?category=<?php echo $value ?> " class="brand-text">
+                                        <div class="card" style="width: 18rem;">
+                                            <img class="card-img-top" style="height:160px; border-bottom: 1px solid #f2f2f2" src=<?php echo "img/" . $value . ".png" ?> alt="Card image cap">
+                                                <div class="card-body">
+                                                    <h5 class="card-title"><?php echo $value; ?></h5>
+                                                </div>
+			                            </div>
+                                    </a>
                                     </div>
-                                </div>
-
-                                <div class="column">
-                                    <img class="card-img-top"
-                                        src="https://odils.com/wp-content/uploads/2020/04/speaking-listening-reading-writing.jpg"
-                                        alt="Card image cap" width="300" height="160">
-                                    <div class="quiz-body">
-                                        <h6 class="quiz-title">English</h6>
-                                    </div>
-                                </div>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>

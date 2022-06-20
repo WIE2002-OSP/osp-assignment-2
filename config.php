@@ -3,8 +3,8 @@
 ## Required to be change then
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root');
-define('DB_PASSWORD', 'mysql123');
-define('DB_NAME', 'osp_ass2');
+define('DB_PASSWORD', '');
+define('DB_NAME', 'osp-assignment-2');
 
 /* Attempt to connect to MySQL database */
 $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
