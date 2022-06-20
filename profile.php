@@ -25,7 +25,11 @@
 
 <?php
 	include('config.php');
-	$query = 'SELECT * FROM user';
+	
+	$ID = $_SESSION['user_id'];
+	if($ID) {
+	
+	$query = "SELECT * FROM user where user_id = '$ID' ";
 	$results = mysqli_query ($link, $query) or die ('Error in query : $query . ' . mysql_error());
 	
 	if (mysqli_num_rows ($results) > 0){
@@ -58,9 +62,11 @@
 <?php
 		}
 	}
+}
 	mysqli_free_result ($results);
 	mysqli_close ($link);
 ?>
+
                     <div class="profile-subtitle">
                         <i class="fa fa-check-circle"></i>
                         <div>Quiz Joined</div>
@@ -127,6 +133,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
