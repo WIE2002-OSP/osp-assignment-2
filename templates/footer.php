@@ -370,7 +370,7 @@ $(document).ready(function() {
                 alert('Question is updated!');
             },
             error: function(xhr, status, error) {
-                alert('Failed to add question!');
+                alert('Failed to edit question!');
                 question_table.ajax.reload();
                 $("#questionModal.view-quiz").removeClass("show");
             }
