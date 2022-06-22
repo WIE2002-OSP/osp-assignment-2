@@ -27,7 +27,7 @@ if (cardList) {
     });
 }
 $(document).ready(function() {
-    let BASE_URL = 'http://localhost/osp-assignment-2'
+    let BASE_URL = 'http://localhost/osp-assignment/osp-assignment-2'
     $(".quotes div").addClass("load");
     var current = location.pathname;
     $('nav')

@@ -1,11 +1,12 @@
 <?php include('templates/header.php'); ?>
 <?php session_start();
+// Check if the user is logged in, if not then redirect him to login page
+include('check-login.php');
 $user_id =  $_SESSION["user_id"];
 $url = $_SERVER['REQUEST_URI'];
 $url_components = parse_url($url);
 parse_str($url_components['query'], $params);
 $quiz_id = $params['quizId'];
-
 ?>
 
 <body>

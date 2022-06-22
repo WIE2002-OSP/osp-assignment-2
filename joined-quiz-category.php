@@ -1,6 +1,7 @@
 <?php
 // Initialize the session
 session_start();
+include('check-login.php');
 
 $ID = $_SESSION['user_id'];
 

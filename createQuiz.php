@@ -1,6 +1,7 @@
 <?php
 // Initialize the session
 session_start();
+include('check-login.php');
 
 require_once "config.php";
 

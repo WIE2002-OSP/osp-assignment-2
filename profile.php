@@ -1,6 +1,7 @@
 <?php include('templates/header.php'); ?>
 <?php 
-    session_start(); 
+    session_start();
+    include('check-login.php'); 
     $category = ["Mathematics", "Science", "Geography", "English", "Malay", "Physics", "Biology", "Japanese"]; ?>
 ?>
 

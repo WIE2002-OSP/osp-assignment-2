@@ -2,9 +2,9 @@
 /* Database credentials.*/
 ## Required to be change then
 define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'gaychin');
-define('DB_PASSWORD', 'admin');
-define('DB_NAME', 'do_quiz');
+define('DB_USERNAME', 'root');
+define('DB_PASSWORD', '');
+define('DB_NAME', 'osp-assignment-2');
 
 /* Attempt to connect to MySQL database */
 $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);

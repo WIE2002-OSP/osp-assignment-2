@@ -2,6 +2,7 @@
 <?php
 session_start();
 require_once "./config.php";
+include('check-login.php');
 $user_id =  $_SESSION["user_id"];
 $url = $_SERVER['REQUEST_URI'];
 $url_components = parse_url($url);

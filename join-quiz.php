@@ -2,6 +2,7 @@
 <?php
 // Initialize the session
 session_start();
+include('check-login.php');
 $user_id =  $_SESSION["user_id"];
 
 $url = $_SERVER['REQUEST_URI'];

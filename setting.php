@@ -3,6 +3,7 @@
 require_once "config.php";
 
 session_start();
+include('check-login.php');
 $user_id =  $_SESSION["user_id"];
 $pw_errors = ['old' => '', 'new' => '', 'confirm' => ''];
 $errors = ['email' => ''];
@@ -31,7 +32,7 @@ if (isset($_POST['change-account-setting'])) {
 
     if (!empty($_POST['phone-number'])) {
         $phone = $_POST['phone-number'];
-        $sql = "UPDATE user SET user_phone=$phone WHERE user_id=$user_id";
+        $sql = "UPDATE user SET user_phone='$phone' WHERE user_id=$user_id";
         if (mysqli_query($link, $sql) === TRUE) {
             echo "Record updated successfully";
         } else {
@@ -43,6 +44,7 @@ if (isset($_POST['change-account-setting'])) {
         $username = $_POST['username'];
         $sql = "UPDATE user SET user_name='$username' WHERE user_id=$user_id";
         if (mysqli_query($link, $sql) === TRUE) {
+            $_SESSION["user_name"] = $username;
             echo "Record updated successfully";
         } else {
             echo "Error updating record: " . $link->error;
@@ -125,7 +127,8 @@ if (isset($_POST['update-pw'])) {
                 <input id="email" name="email" value="<?php echo "" ?>">
                 <div class="red-text"><?php echo $errors['email']; ?></div>
                 <label>Phone number</label>
-                <input id="phone-number" name="phone-number" value="<?php echo "" ?>">
+                <input type="tel" id="phone-number" name="phone-number" value="<?php echo "" ?>" placeholder="0XX-XXX XXXX"
+                            pattern="[0-9]{3}-[0-9]{3} [0-9]{4}">
                 <label>Username</label>
                 <input id="username" name="username" value="<?php echo "" ?>">
                 <input class="setting-btn" name="change-account-setting" type="submit" value="Save changes">
