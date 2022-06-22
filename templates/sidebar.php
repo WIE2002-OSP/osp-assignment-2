@@ -32,14 +32,6 @@
                 Profile
             </a>
         </li>
-        <!--
-        <li class="sidebar-item">
-            <a href="view-analytics.php">
-                <i class="fa-solid fa-circle-user"></i>
-                Analytics
-            </a>
-        </li>
-         -->
         <li class="sidebar-item">
             <a href="setting.php"><i class="fa-solid fa-gear"></i>
                 Settings
