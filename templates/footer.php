@@ -17,15 +17,19 @@
     src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
 </script>
 <script type="text/javascript">
-var cardList = document.querySelector(".card-list");
+var cardList = document.querySelectorAll(".card-list");
 if (cardList) {
-    cardList.addEventListener("wheel", (event) => {
-        event.preventDefault();
-        cardList.scrollBy({
-            left: event.deltaY < 0 ? -200 : 200,
+    for (let i = 0; i < cardList.length; i++) {
+        cardList[i].addEventListener("wheel", (event) => {
+            event.preventDefault();
+            cardList[i].scrollBy({
+                left: event.deltaY < 0 ? -200 : 200,
+            });
         });
-    });
+    }
 }
+
+
 $(document).ready(function() {
     let BASE_URL = 'http://localhost/osp-assignment-2'
     $(".quotes div").addClass("load");
