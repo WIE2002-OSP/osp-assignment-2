@@ -17,7 +17,7 @@ if (mysqli_num_rows($get_data_queryA) != 0) {
 
     while ($r = mysqli_fetch_array($get_data_queryA)) {
         extract($r);
-        $result[] = array("question_id" => $question_id, "question_name" => $question_name, 'correct_people_amount' => $correct_people, 'wrong_people_amount' => $wrong_people, 'correct_per' => ($correct_people / ($correct_people + $wrong_people) * 100));
+        $result[] = array("question_id" => $question_id, "question_name" => $question_name, 'correct_people_amount' => $correct_people, 'wrong_people_amount' => $wrong_people, 'correct_per' => round($correct_people / ($correct_people + $wrong_people) * 100));
     }
     $json = array("data" => $result);
 } else {

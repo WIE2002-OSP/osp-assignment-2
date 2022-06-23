@@ -66,8 +66,8 @@ for ($i = 0; $i < count($all_questions); $i++) {
                         <div><?php echo $i + 1 . ". " . $complete_questions[$i]["question_name"]; ?>
                         </div>
                         <?php
-                            $is_correct =  $all_answers_arr[$i]['is_correct'];
-                            $answer_chosen = $all_answers_arr[$i]['answer_choice_number'];
+                            $is_correct =  $all_answers_arr[$i]['is_correct'] ?? "Nothing";
+                            $answer_chosen = $all_answers_arr[$i]['answer_choice_number'] ?? "This is newly added question!";
                             $correct_choice = ($complete_questions[$i]["correct_choice_number"]); ?>
                         <div class="quiz-option">
                             <?php foreach (range(0, 3) as $j) { ?>
@@ -80,14 +80,21 @@ for ($i = 0; $i < count($all_questions); $i++) {
 
                             <?php } ?>
                         </div>
-                        <?php if ($is_correct) :; ?>
-                        <div style="font-weight:bold; color:#0FBB0A">You pick <?php echo $correct_choice; ?>. You answer
-                            this question correctly!</div>
-                        <?php else : ?>
+                        <?php if ($is_correct == "Nothing") :; ?>
+                        <div style="font-weight:bold; color:#FED600">
+                            <?php echo "This a newly added question"; ?>
+                            . The correct answer is <?php echo $correct_choice; ?>
+                        </div>
+                        <!-- <div style="font-weight:bold; color:#0FBB0A">You pick <?php echo $correct_choice; ?>. You answer
+                            this question correctly!</div> -->
+                        <?php elseif ($is_correct == false) : ?>
                         <div style="font-weight:bold; color:#F66C6E">You pick&nbsp;
                             <?php echo $answer_chosen; ?>
                             . The correct answer is <?php echo $correct_choice; ?>
                         </div>
+                        <?php else : ?>
+                        <div style="font-weight:bold; color:#0FBB0A">You pick <?php echo $correct_choice; ?>. You answer
+                            this question correctly!</div>
                         <?php endif; ?>
                     </div>
                     <?php } ?>

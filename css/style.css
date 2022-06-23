@@ -1061,8 +1061,6 @@ nav ul li.items.selected a {
   color: white;
 }
 
-
-
 .category-analytic-btn {
   border-radius: 10px;
   color: white;
@@ -1499,6 +1497,7 @@ a.review-btn:hover {
 
 #answer-form {
   display: flex;
+  width: 100%;
   flex-direction: column;
   row-gap: 20px;
 }
